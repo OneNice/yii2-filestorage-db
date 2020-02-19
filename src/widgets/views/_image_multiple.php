@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="widget-image__grid <?= empty($models) ? 'widget-image__grid--empty' : '' ?>">
+<div id="sortable-images" class="widget-image__grid <?= empty($models) ? 'widget-image__grid--empty' : '' ?>">
   <div class="widget-image__grid-cell js-template" style="display: none">
     <div class="widget-image__grid-item widget-image__grid-item--loading">
       <div class="widget-image__grid-item_image">
@@ -23,23 +23,24 @@
     </div>
   </div>
     <? foreach ($models as $model): ?>
-      <div class="widget-image__grid-cell" data-file-id="<?= $model->id ?>">
-        <div class="widget-image__grid-item">
-          <div class="widget-image__grid-item_image">
-            <img src="<?= $model->getUrl() ?>">
-          </div>
-            <? if ($textInputsName): ?>
-              <div class="widget-image__grid-item_text">
+        <div class="widget-image__grid-cell" data-file-id="<?= $model->id ?>">
+            <div class="widget-image__grid-item">
+                <div class="widget-image__grid-item_image">
+                    <img src="<?= $model->getUrl() ?>">
+                </div>
+                <? if ($textInputsName): ?>
+                    <div class="widget-image__grid-item_text">
                 <textarea
-                    name="<?= $textInputsName ?>[<?= $model->id ?>]"><?= isset($textInputsValue[$model->id]) ? $textInputsValue[$model->id] : '' ?></textarea>
-              </div>
-            <? endif; ?>
-          <div class="widget-image__grid-item-actions">
-            <button class="js-widget-image-delete"><?=Yii::t('filestorage', 'Remove')?></button>
-          </div>
+                        name="<?= $textInputsName ?>[<?= $model->id ?>]"><?= isset($textInputsValue[$model->id]) ? $textInputsValue[$model->id] : '' ?></textarea>
+                    </div>
+                <? endif; ?>
+                <div class="widget-image__grid-item-actions">
+                    <button class="js-widget-image-delete"><?=Yii::t('filestorage', 'Remove')?></button>
+                </div>
+            </div>
         </div>
-      </div>
     <? endforeach; ?>
+
 </div>
 
 <div class="widget-image__empty">

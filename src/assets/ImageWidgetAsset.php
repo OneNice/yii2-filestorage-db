@@ -21,7 +21,8 @@ class ImageWidgetAsset extends AssetBundle
     ];
 
     public $js = [
-        'image-widget.js'
+        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+        'image-widget.js',
     ];
 
     public $css = [

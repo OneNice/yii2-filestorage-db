@@ -216,6 +216,7 @@
 
       (function ($elem) {
         upload(options.uploadUrl, file, false, function (file) {
+          $elem.attr('data-file-id', file.id);
           $elem.find('img').attr('src', file.url);
           $elem.find('.widget-image__grid-item').removeClass('widget-image__grid-item--loading');
           $elem.data('file-id', file.id);
@@ -276,4 +277,18 @@
       return new ImageWidget($(this), options);
     });
   };
+  if(window.jQuery) {
+    $("#sortable-images").sortable({
+      update: UpdateImageProirity
+    }).disableSelection();
+  }
+  function UpdateImageProirity(event, ui) {
+    let values = [];
+    $('.widget-image__grid-cell').each(function () {
+      values.push($(this).attr('data-file-id'));
+    });
+    $('.widget-image input[type=hidden]')
+      .val(values.filter(u => u).join(','));
+  }
+  
 })();

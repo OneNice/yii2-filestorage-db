@@ -205,4 +205,10 @@
 .widget-image__grid-item_text textarea:focus{
     outline: none;
 }
-
+#sortable-images{
+    width: 100%;
+}
+#sortable-images .widget-image__grid-cell{
+    float: left;
+    width: 33.33%;
+}
